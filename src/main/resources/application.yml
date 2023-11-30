@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: local # default
+    group:
+      local:
+        - common
+      prod:
+        - common
+
+---
+spring:
+  config:
+    activate:
+      on-profile: common
+
+#---
+
+---
+spring:
+  config:
+    activate:
+      on-profile: loacl
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/project-kakaoapi
+    username: root
+    password: 8384
+  data:
+    redis:
+      host: localhost
+      port: 6739
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+pharmacy:
+  recommendation:
+    base:
+      url: http://localhost:8080/dir/
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
