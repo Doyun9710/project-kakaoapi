@@ -13,31 +13,29 @@ spring:
     activate:
       on-profile: common
 
-#---
+kakao:
+  rest:
+    api:
+      key: ${KAKAO_REST_API_KEY}
 
 ---
 spring:
   config:
     activate:
-      on-profile: loacl
+      on-profile: local
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/project-kakaoapi
-    username: root
-    password: 8384
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
   data:
     redis:
       host: localhost
       port: 6739
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: true
-
-pharmacy:
-  recommendation:
-    base:
-      url: http://localhost:8080/dir/
 
 ---
 
